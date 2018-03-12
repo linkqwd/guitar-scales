@@ -1,0 +1,14 @@
+@mixin media($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin string($position) {
+	/* background: rgba(red, .3); */
+	width: 100%;
+	height: 14px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}

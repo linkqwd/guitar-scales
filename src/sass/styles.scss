@@ -1,0 +1,113 @@
+@import '_reset.scss';
+@import 'smart-grid.scss';
+@import '_fonts.scss';
+@import '_vars.scss';
+@import '_mixins.scss';
+
+body {
+	font-family: sans-serif;
+	font-size: 18px;
+	padding: 30px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.notes {
+	display: flex;
+}
+
+.notes__item {
+	padding: 5px;
+	width: 35px;
+	background: #eee;
+	border: 1px solid grey;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.string {
+	display: flex;
+	margin: 10px 0;
+}
+
+.string__note {
+	padding: 5px;
+	width: 35px;
+	background: #eee;
+	border: 1px solid grey;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.freatboard {
+	background: url(../img/freatboard.gif) no-repeat center left;
+	height: 88px;
+	width: 740px;
+	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	box-shadow: inset 0px 0px 6px 1px rgba(20,20,20,1);
+	position: relative;
+}
+
+.string-1 {
+	@include string(7px)
+}
+
+.string-2 {
+	@include string(9px)
+}
+
+.string-3 {
+	@include string(10px)
+}
+
+.string-4 {
+	@include string(10px)
+}
+
+.string-5 {
+	@include string(10px)
+}
+
+.string-6 {
+	@include string(12px)
+}
+
+.freat {
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	margin-left: 30px;
+	position: relative;
+	&:after {
+		background: yellow;
+		position: absolute;
+		z-index: 100;
+		content: "A";
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		line-height: 12px;
+		displai: block;
+		border-radius: 50%;
+		font-size: 11px;
+		text-align: center;
+		font-weight: bold;
+	}
+}
+
+.freat-1 {
+	margin-left: 30px;
+}
+
+.freat-2 {
+	margin-left: 35px;
+}
+
+.freat-9 {
+	margin-left: 29px;
+}

@@ -1,0 +1,249 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+img {
+  max-width: 100%;
+}
+
+@font-face {
+  font-family: "firasans";
+  src: url("../fonts/FiraSansRegular/FiraSansRegular.ttf") format("truetype");
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+  padding: 30px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.notes {
+  display: flex;
+}
+
+.notes__item {
+  padding: 5px;
+  width: 35px;
+  background: #eee;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.string {
+  display: flex;
+  margin: 10px 0;
+}
+
+.string__note {
+  padding: 5px;
+  width: 35px;
+  background: #eee;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.freatboard {
+  background: url(../img/freatboard.gif) no-repeat center left;
+  height: 88px;
+  width: 740px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0px 0px 6px 1px #141414;
+  position: relative;
+}
+
+.string-1 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.string-2 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.string-3 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.string-4 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.string-5 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.string-6 {
+  /* background: rgba(red, .3); */
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.freat {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-left: 30px;
+  position: relative;
+}
+
+.freat:after {
+  background: yellow;
+  position: absolute;
+  z-index: 100;
+  content: "A";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  line-height: 12px;
+  displai: block;
+  border-radius: 50%;
+  font-size: 11px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.freat-1 {
+  margin-left: 30px;
+}
+
+.freat-2 {
+  margin-left: 35px;
+}
+
+.freat-9 {
+  margin-left: 29px;
+}

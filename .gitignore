@@ -1,0 +1,9 @@
+/node_modules/
+/dist/
+/src/libs/*
+/package-lock.json
+/smartgrid.js
+/.git/
+/**/*.psd
+/**/Thumbs.db
+/**/.DS_Store
