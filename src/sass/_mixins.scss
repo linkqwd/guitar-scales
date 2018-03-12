@@ -4,11 +4,19 @@
 	}
 }
 
-@mixin string($position) {
-	/* background: rgba(red, .3); */
+@mixin string() {
 	width: 100%;
-	height: 14px;
-	cursor: pointer;
+	height: 35px;
 	display: flex;
-	align-items: center;
+	position: relative;
+	&:before {
+		position: absolute;
+		content: '';
+		height: 1px;
+		width: 100%;
+		background: #919191;
+		top:0;
+		bottom: 0;
+		margin: auto 0;
+	}
 }
