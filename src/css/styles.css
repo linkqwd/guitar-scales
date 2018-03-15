@@ -168,7 +168,6 @@ body {
 }
 
 .freat:before {
-  background: #FFE5AF;
   position: absolute;
   z-index: 100;
   content: attr(data-content);
@@ -187,10 +186,14 @@ body {
   margin: auto 0;
 }
 
+.note:before {
+  background: #FFE5AF;
+}
+
 .freat-1 {
   background: #eee;
 }
 
-.tonic:before {
+.T:before {
   background: #D4B16A;
 }

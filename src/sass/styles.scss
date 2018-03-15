@@ -49,7 +49,6 @@ body {
 	position: relative;
 	border-right: 1px solid black;
 	&:before {
-		background: #FFE5AF;
 		position: absolute;
 		z-index: 100;
 		content: attr(data-content);
@@ -69,11 +68,17 @@ body {
 	}
 }
 
+.note {
+	&:before {
+		background: #FFE5AF;
+	}
+}
+
 .freat-1 {
 	background: #eee;
 }
 
-.tonic {
+.T {
 	&:before {
 		background: #D4B16A;
 		
