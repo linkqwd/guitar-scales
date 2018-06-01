@@ -4,19 +4,17 @@
 	}
 }
 
-@mixin string() {
-	width: 100%;
-	height: 35px;
-	display: flex;
-	position: relative;
-	&:before {
-		position: absolute;
-		content: '';
-		height: 1px;
-		width: 100%;
-		background: #919191;
-		top:0;
-		bottom: 0;
-		margin: auto 0;
-	}
+@mixin symbol($child, $symbol) {
+	.freat:nth-child(#{$child})  {
+		&:after {
+			content: $symbol;
+			position: absolute;
+			top: 120%;
+			right: 0;
+			left: 0;
+			text-align: center;
+			height: 10px;
+			font-size: 6px;
+		}
+	} 
 }

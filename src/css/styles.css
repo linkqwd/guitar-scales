@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* 
 html5doctor.com Reset Stylesheet
 v1.6.1
@@ -121,26 +122,56 @@ body {
   box-sizing: border-box;
 }
 
-.notes {
-  display: flex;
+.notes, .interval {
+  position: relative;
+  z-index: 100;
+  padding-left: 52px;
+  margin-bottom: 30px;
+  font-size: 0;
 }
 
-.notes__item {
+.notes p, .interval p {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.notes__item, .interval__item {
   padding: 5px;
-  width: 35px;
-  background: #eee;
-  border: 1px solid grey;
+  width: 41px;
+  cursor: pointer;
+  border: 1px solid #aaa;
   box-sizing: border-box;
   text-align: center;
+  display: inline-block;
+  transition: .3s;
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+.notes__item:hover, .interval__item:hover {
+  background: #FFE5AF;
 }
 
 .freatboard {
-  max-width: 790px;
-  margin: 20px 0;
+  max-width: 920px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 1px #141414;
   position: relative;
+  box-shadow: 0px 0px 5px 0px #ccbca3;
+}
+
+.freatboard:before {
+  content: "";
+  position: absolute;
+  height: 520px;
+  width: 420px;
+  top: -150px;
+  z-index: 6;
+  right: 94%;
+  background-image: url(../img/www.jpg);
+  background-position: right 10px;
+  background-repeat: no-repeat;
+  background-size: 224%;
 }
 
 .string {
@@ -159,21 +190,23 @@ body {
   top: 0;
   bottom: 0;
   margin: auto 0;
+  z-index: 5;
 }
 
 .freat {
   width: 100%;
   position: relative;
   border-right: 1px solid black;
+  background: #ccbca3;
 }
 
 .freat:before {
   position: absolute;
-  z-index: 100;
   content: attr(data-content);
   border-radius: 50%;
   font-size: 13px;
-  left: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
   padding: 2px;
   width: 20px;
@@ -184,16 +217,124 @@ body {
   top: 0;
   bottom: 0;
   margin: auto 0;
+  z-index: 10;
+}
+
+.freat:first-child {
+  margin-left: 8px;
+}
+
+.string:last-child .freat:nth-child(4):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(6):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(8):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(10):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(13):after {
+  content: "⚫⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(16):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(18):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(20):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.string:last-child .freat:nth-child(22):after {
+  content: "⚫";
+  position: absolute;
+  top: 120%;
+  right: 0;
+  left: 0;
+  text-align: center;
+  height: 10px;
+  font-size: 6px;
+}
+
+.gray:before {
+  background: #d1d1d1;
 }
 
 .note:before {
   background: #FFE5AF;
 }
 
-.freat-1 {
-  background: #eee;
+.selected {
+  background: #FFE5AF;
 }
 
 .T:before {
-  background: #D4B16A;
+  background: #faf189;
 }

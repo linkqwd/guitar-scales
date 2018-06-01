@@ -16,45 +16,95 @@ body {
 	box-sizing: border-box;
 }
 
+.interval {
+	@extend .notes;
+
+}
+
+.interval__item {
+	@extend .notes__item;
+}
+
 .notes {
-	display: flex;
+	position: relative;
+	z-index: 100;
+	padding-left: 52px;
+	margin-bottom: 30px;
+	font-size: 0;
+	p {
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
 }
 
 .notes__item {
 	padding: 5px;
-	width: 35px;
-	background: #eee;
-	border: 1px solid grey;
+	width: 41px;
+	cursor: pointer;
+	border: 1px solid #aaa;
 	box-sizing: border-box;
 	text-align: center;
+	display: inline-block;
+	transition: .3s;
+	font-size: 16px;
+	margin-right: 2px;
+	&:hover {
+		background: #FFE5AF;
+	}
 }
 
 
 .freatboard {
-	max-width: 790px;
-	margin: 20px 0;
+	max-width: 920px;
 	display: flex;
 	flex-direction: column;
-	box-shadow: 0px 0px 6px 1px rgba(20,20,20,1);
 	position: relative;
-
+	box-shadow: 0px 0px 5px 0px #ccbca3;
+	&:before {
+		content: "";
+		position: absolute;
+		height: 520px;
+		width: 420px;
+		top: -150px;
+		z-index: 6;
+		right: 94%;
+		background-image: url(../img/www.jpg);
+		background-position: right 10px;
+		background-repeat: no-repeat;
+		background-size: 224%;
+	}
 }
 
 .string {
-	@include string();
+	width: 100%;
+	height: 35px;
+	display: flex;
+	position: relative;
+	&:before {
+		position: absolute;
+		content: '';
+		height: 1px;
+		width: 100%;
+		background: #919191;
+		top:0;
+		bottom: 0;
+		margin: auto 0;
+		z-index: 5;
+	}
 }
 
 .freat {
 	width: 100%;
 	position: relative;
 	border-right: 1px solid black;
+	background: #ccbca3;
 	&:before {
 		position: absolute;
-		z-index: 100;
 		content: attr(data-content);
 		border-radius: 50%;
 		font-size: 13px;
-		left: 10px;
+		left: 50%;
+		transform: translateX(-50%);
 		font-weight: bold;
 		padding: 2px;
 		width: 20px;
@@ -65,6 +115,31 @@ body {
 		top: 0;
 		bottom: 0;
 		margin: auto 0;
+		z-index: 10;
+	}
+}
+
+.freat:first-child  {
+	//background: #eee;
+	//position: relative;
+	margin-left: 8px;
+}
+
+.string:last-child {
+	@include symbol('4', '\26AB');
+	@include symbol('6', '\26AB');
+	@include symbol('8', '\26AB');
+	@include symbol('10', '\26AB');
+	@include symbol('13', '\26AB \26AB');
+	@include symbol('16', '\26AB');
+	@include symbol('18', '\26AB');
+	@include symbol('20', '\26AB');
+	@include symbol('22', '\26AB');
+}
+
+.gray {
+	&:before {
+		background: #d1d1d1;
 	}
 }
 
@@ -74,13 +149,12 @@ body {
 	}
 }
 
-.freat-1 {
-	background: #eee;
+.selected {
+	background: #FFE5AF;
 }
 
 .T {
 	&:before {
-		background: #D4B16A;
-		
+		background: #faf189;
 	}
 }
