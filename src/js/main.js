@@ -1,25 +1,40 @@
-let choosedInterval = document.querySelectorAll('.notes__item');
+// Select all notes which determine tonic
+let slectTonic = document.querySelectorAll('.notes__item');
+let defaultOptions = {
+	scale: 'naturalMajor',
+	tuning: 'standard'
+}
 
-choosedInterval.forEach(function(elem) {
-	elem.onclick = function () {
-		let t = document.querySelector('.selected');
-		(t === null) ? false : t.classList.remove('selected');
-		this.classList.add('selected');
+document.querySelector('.scales').onclick = function () {
+	setupTonic();
+}
 
-		let options = {
-			tonic: this.innerHTML,
-			scale: 'pentatonicMinor',
-			tuning: 'standard'
+document.querySelector('.notes-trainer').onclick = function () {
+	makeFreatBoard(defaultOptions, true);
+	noteTrainerLauncher()
+}
+
+function setupTonic () {
+	slectTonic.forEach(function(elem) {
+		elem.onclick = function () {
+			let t = document.querySelector('.selected');
+			(t === null) ? false : t.classList.remove('selected');
+			this.classList.add('selected');
+
+			// options passes in makeFreatBoard function
+			let options = {
+				tonic: this.innerHTML,
+				scale: 'naturalMajor',
+				tuning: 'standard'
+			}
+			// Main function which paint notes on freatboard
+			makeFreatBoard(options, false);
 		}
+	});
+	slectTonic[0].click(); // Default launcher
+}
 
-		makeFreatBoard(options, true);
-
-	}
-});
-
-choosedInterval[9].click(); // Default tonic to launch application
-
-function makeFreatBoard (options, clean) {
+function makeFreatBoard (options, noteTrainer) {
 	const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 	const intervals  = ['T', '2m', '2b', '3m', '3b', '4', 'TT', '5', '6m', '6b', '7m', '7b'];
 	const scaleList = {
@@ -33,8 +48,16 @@ function makeFreatBoard (options, clean) {
 		dropD: ['E', 'B', 'G', 'D', 'A', 'D']
 	};
 
-	(clean === true) ? erase () : false;
+	const string1 = document.querySelectorAll('.string-1 .freat');
+	const string2 = document.querySelectorAll('.string-2 .freat');
+	const string3 = document.querySelectorAll('.string-3 .freat');
+	const string4 = document.querySelectorAll('.string-4 .freat');
+	const string5 = document.querySelectorAll('.string-5 .freat');
+	const string6 = document.querySelectorAll('.string-6 .freat');
 
+	// it removes alrady painted notes on freatboard from pervious invokes
+	// of makeFreatBoard function
+	erase () 
 	function erase () {
 		let freats = document.querySelectorAll('.freat');
 		freats.forEach(function(elem) {
@@ -43,19 +66,18 @@ function makeFreatBoard (options, clean) {
 		});
 	}
 
-	const string1 = document.querySelectorAll('.string-1 .freat');
-	const string2 = document.querySelectorAll('.string-2 .freat');
-	const string3 = document.querySelectorAll('.string-3 .freat');
-	const string4 = document.querySelectorAll('.string-4 .freat');
-	const string5 = document.querySelectorAll('.string-5 .freat');
-	const string6 = document.querySelectorAll('.string-6 .freat');
-
+	// This function returns arrey of objects with pair of {NOTE and it's INTERVAL}
 	function makeInterval () {
 		let result = [];
-		let tonicInArray = notes.indexOf(options.tonic)
 
-		for (var i = 0, k = tonicInArray; i < notes.length; i++, k++) {
+		// This variable contains position of choosed Tonic in source notes array
+		let choosedTonic = notes.indexOf(options.tonic)
+
+		// Needs 12 steps to fill array with needed data
+		for (var i = 0, k = choosedTonic; i < notes.length; i++, k++) {
+			// notes[tonic] = intervals[0], and os on, so K can be over 12 (number of notes)
 			(notes[k] === undefined) ? k = 0 : false;
+
 			result.push({
 				note: notes[k],
 				interval: intervals[i]
@@ -65,24 +87,25 @@ function makeFreatBoard (options, clean) {
 		return result
 	}
 
-	let intervalArray = makeInterval();
-
 	function makeScale (string, tuning, note1) {
 		for (let i = 0, k = notes.indexOf(tuningOptions[tuning][note1]);
-						 i < string.length; i++, k++) {
+			i < string.length; i++, k++) {
 
 			(notes[k] === undefined) ? k = 0 : false
 
-			string[i].classList.add(notes[k]);
+			// Get pair of Note and it's interval
+			let noteIntervalPair = search(notes[k], makeInterval());
 
-			let temp = search(notes[k], intervalArray);
+			string[i].classList.add(noteIntervalPair.note);
 
-			string[i].classList.add(temp.interval);
-
-			paintNotes(string[i], notes[k], temp.interval);
+			if (!(noteTrainer))  {
+				string[i].classList.add(noteIntervalPair.interval); // paint notes on strings
+				paintNotes(string[i], notes[k], noteIntervalPair.interval); // paint intervals on strings
+			}
 		}
 	}
 
+	/* Additional functions for makeScale function*/
 	function paintNotes (selector, note, interval) {
 		if (scaleList[options.scale].indexOf(interval) >= 0) {
 			$(selector).attr('data-content', note);
@@ -92,20 +115,59 @@ function makeFreatBoard (options, clean) {
 			selector.classList.add('gray');
 		}
 	}
-	
-	makeScale(string1, options.tuning, 0);
-	makeScale(string2, options.tuning, 1);
-	makeScale(string3, options.tuning, 2);
-	makeScale(string4, options.tuning, 3);
-	makeScale(string5, options.tuning, 4);
-	makeScale(string6, options.tuning, 5);
 
-	function search(nameKey, myArray){
+	function search(nameKey, myArray) {
 		for (var i=0; i < myArray.length; i++) {
 			if (myArray[i].note === nameKey) {
 				return myArray[i];
 			}
 		}
 	}
+	/* */
+
+	makeScale(string1, options.tuning, 0);
+	makeScale(string2, options.tuning, 1);
+	makeScale(string3, options.tuning, 2);
+	makeScale(string4, options.tuning, 3);
+	makeScale(string5, options.tuning, 4);
+	makeScale(string6, options.tuning, 5);
 }
 
+function noteTrainerLauncher() {
+	let freats = document.querySelectorAll('.freat');
+	let notes = document.querySelectorAll('.notes__item');
+
+	notes.forEach(function(elem) {
+		elem.onclick = function () {
+			noteGuesser(elem)
+		}
+	});
+
+	function noteGuesser(note) {
+		let paintedNote = document.querySelector('.what-note');
+	
+		if (paintedNote.classList.contains(note.innerHTML)) {
+			$(paintedNote).attr('data-content', note.innerHTML);
+			paintedNote.classList.remove('what-note', 'err');
+			paintedNote.classList.add('T');
+		} else {
+			paintedNote.classList.add('err');
+		}
+	}
+	
+	function paintRndNote() {
+		let randNote = getRandNote()
+		$(freats[randNote]).attr('data-content', '?');
+		freats[randNote].classList.add('what-note');
+	}
+
+	function getRandNote() {
+		return +(Math.random() * (freats.length - 0) + 0).toFixed();
+	}
+
+	paintRndNote()
+	
+
+
+	
+}

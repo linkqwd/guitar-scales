@@ -196,7 +196,7 @@ body {
 .freat {
   width: 100%;
   position: relative;
-  border-right: 1px solid black;
+  border-right: 2px solid #ddd;
   background: #ccbca3;
 }
 
@@ -222,6 +222,13 @@ body {
 
 .freat:first-child {
   margin-left: 8px;
+}
+
+.features {
+  position: relative;
+  margin-top: 50px;
+  z-index: 100;
+  padding-left: 52px;
 }
 
 .string:last-child .freat:nth-child(4):after {
@@ -335,6 +342,14 @@ body {
   background: #FFE5AF;
 }
 
+.err:before {
+  border: 1px solid #990000;
+}
+
 .T:before {
   background: #faf189;
+}
+
+.what-note:before {
+  background: #d1d1d1;
 }
